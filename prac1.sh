@@ -44,6 +44,24 @@ elif [[ $opcio == 'se' ]]; then
 #opcio 5 (le)
 
 elif [[ $opcio == 'le' ]]; then
-	llistat=$(grep -w -i -n "$codi_pais" cities.csv | cut -d
-	echo "aun no"
+	llistat=$(grep -w -i -n "$codi_pais" cities.csv | cut -d ',' -f3 | cut -d ',' -f5)
+	echo "$llistat"
+
+#opcio 6 (lcp)
+elif [[ $opcio == 'lcp' ]]; then
+	llista=$(grep -w -i "$codi_pais" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
+	echo "$llista"
+
+#opcio 7 (ecp)
+elif [[ $opcio == 'ecp' ]]; then
+	llista2=$(grep -w -i "$codi_pais" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
+	echo "$llista2" >> codi_pais.csv
+
+#opcio 8 (lce)
+elif [[$opcio == 'lce' ]]; then
+	llista3=$(grep -w -i "$codi_estat" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
+	echo "$llista3"
+
+#opcio 9 (
+
 fi
