@@ -69,6 +69,7 @@ elif [[ $opcio == 'lcp' ]]; then
 #opcio 7 (ecp)
 #Extreu les poblacions del país ja seleccionat per guardar-les
 #En aquesta opcio fem el mateix d'abans, però el 'echo' el coloquem en un arxiu nou
+
 elif [[ $opcio == 'ecp' ]]; then
 	llista2=$(grep -w -i "$codi_pais" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
 	echo "$llista2" >> codi_pais.csv
@@ -77,12 +78,23 @@ elif [[ $opcio == 'ecp' ]]; then
 #Llista de les poblacions de l'estat seleccionat abans
 #Una versió semblant a la 6 però ara fem el 'grep' del codi de l'estat
 
-elif [[$opcio == 'lce' ]]; then
+elif [[ $opcio == 'lce' ]]; then
 	llista3=$(grep -w -i "$codi_estat" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
 	echo "$llista3"
 
-#opcio 9 lce
+#opcio 9 (lce)
+#Extreure les poblacions de l'estat seleccionat abans
+#L'únic que fem és pasar el 'echo' que hem fet en l'opció anterior al nou arxiu
+
+elif [[ $opcio == 'lce' ]]; then
+	llista4=$(grep -w -i "$codi_estat" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
+	echo "$llista4" >> <codi pais>_<codi estat>.csv
+
+#opcio 10 (gwd)
 #Obtenir dades d'una ciutat de la WikiData
-elif [[ $opcio == 'gwd' ]]
+#
+
+elif [[ $opcio == 'gwd' ]]; then
+
 
 fi
