@@ -104,9 +104,8 @@ elif [[ $opcio == 'gwd' ]]; then
                 codi_poblacio=$codi_poblacio
         else
                 codi_poblacio=$(awk 'NR == $linea_poblacio {print $11}' cities.csv)
-		wikidata=$(https://www.wikidata.org/wiki/Special:EntityData/<$codi_poblacio>.json)
-		echo '$wikidata' >> <$codi_poblacio>.json
-
+		curl -o $codi_poblacio https://www.wikidata.org/wiki/Special:EntityData/<$codi_poblacio>.json
+	fi
 
 
 fi
