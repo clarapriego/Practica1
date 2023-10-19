@@ -88,13 +88,25 @@ elif [[ $opcio == 'lce' ]]; then
 
 elif [[ $opcio == 'lce' ]]; then
 	llista4=$(grep -w -i "$codi_estat" cities.csv | cut -d ',' -f2 | cut -d ',' -f11)
-	echo "$llista4" >> <codi pais>_<codi estat>.csv
+	echo "$llista4" >> <$codi_pais>_<$codi_estat>.csv
 
 #opcio 10 (gwd)
 #Obtenir dades d'una ciutat de la WikiData
-#
+#Primer mirem que la poblacio sorrespon a l'estat seleccionat
+#Després guardem el wikidata de la poblacio en una variable per poder guardar-ho en l'arxiu
 
 elif [[ $opcio == 'gwd' ]]; then
+	codi_poblacio='XX'
+	read -p "Introdueix població: " poblacio
+        linea_poblacio=$(grep -w -i -n "$poblacio" cities.csv | cut -d ':' -f1)
+        if [[ $linea_poblacio == $linea_estat ]];
+        then
+                codi_poblacio=$codi_poblacio
+        else
+                codi_poblacio=$(awk 'NR == $linea_poblacio {print $11}' cities.csv)
+		wikidata=$(https://www.wikidata.org/wiki/Special:EntityData/<$codi_poblacio>.json)
+		echo '$wikidata' >> <$codi_poblacio>.json
+
 
 
 fi
