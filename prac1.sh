@@ -107,5 +107,35 @@ elif [[ $opcio == 'gwd' ]]; then
 		curl -o $codi_poblacio https://www.wikidata.org/wiki/Special:EntityData/<$codi_poblacio>.json
 	fi
 
+#opcio 11 (est)
+#Obtenir estadístiques apartir de l'arxiu
+
+elif [[ $opcio == 'est' ]]; then
+	nord=0
+	sud=0
+	est=0
+	oest=0
+	no_ubic=0
+	no_wiki=0
+
+	latituts=$(awk -F ',' '{print $9}')
+	longituts=$(awk -F ',' '{print $9}')
+	
+	while IFS = read -r linia1;
+	do
+		if [[ $linia1 -gt 0 ]]; then
+			nord=$nord+1
+		elif [[ 0 -gt $linia1 ]]; then
+			sud=$sud+1
+	done < $latituts
+	
+	while IFS = read -r linia2;
+	do
+		if [[ $linia2 -gt 0 ]]; then
+			est=$est+1
+		if [[ 0 -gt $linia2 ]]; then
+			oest=oest+1
+
+	echo "Nord $nord Sud $sud Est $est Oest $oest No ubic $no_ubic No Wikidata $no_wiki \n"
 
 fi
