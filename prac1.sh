@@ -99,7 +99,7 @@ elif [[ $opcio == 'gwd' ]]; then
 	codi_poblacio='XX'
 	read -p "Introdueix població: " poblacio
         linea_poblacio=$(grep -w -i -n "$poblacio" cities.csv | cut -d ':' -f1)
-        if [[ $linea_poblacio == $linea_estat ]];
+        if [[ $linea_poblacio == $linea_pais ]];
         then
                 codi_poblacio=$codi_poblacio
         else
